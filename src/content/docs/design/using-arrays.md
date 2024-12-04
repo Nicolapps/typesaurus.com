@@ -43,7 +43,7 @@ interface Membership {
 type Role = "admin" | "member";
 
 // Get all organizations where the user is a member
-await db.organizaton.query(($) => $.field("team", userId, "member").eq(true));
+await db.organization.query(($) => $.field("team", userId, "member").eq(true));
 ```
 
 → [Learn more about how Typesaurus helps to make arrays type-safe](/type-safety/arrays/)

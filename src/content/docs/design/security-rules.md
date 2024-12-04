@@ -34,7 +34,7 @@ So the security rule will look like this:
 
 ```
 match /projects/{resourceId} {
-  allow read, write: if get(/databases/$(database)/documents/organizatons/$(resourceId)).data.team[request.auth.uid].member == true;
+  allow read, write: if get(/databases/$(database)/documents/organizations/$(resourceId)).data.team[request.auth.uid].member == true;
 }
 ```
 
@@ -47,7 +47,7 @@ Here, we let users read and write the organization projects if they are members.
 In case when you want to limit write access to parts of a document, grouping writable fields into a [field group](/design/field-groups/) will help you:
 
 ```
-match /organizatons/{resourceId} {
+match /organizations/{resourceId} {
   allow update: if resource.data.team[request.auth.uid].role == "admin"
     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["team", "settings"])
 }
